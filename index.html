@@ -519,6 +519,27 @@
 
     document.querySelector('#nama').value = nama;
   </script>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const nama = urlParams.get('n') || '';
+    const pronoun = urlParams.get('p') || 'Bapak/Ibu/Saudara/i';
+  
+    const namaContainer = document.querySelector('.hero h4 span');
+    namaContainer.innerText = `${pronoun} ${nama},`.replace(/ ,$/, ',');
+  
+    // Tampilkan juga nama tamu di bagian home
+    const guestName = document.getElementById('guestName');
+    if (guestName && nama) {
+      guestName.innerText = `Kepada Yth. ${pronoun} ${nama}`;
+    }
+  
+    // Isi otomatis nama di form RSVP
+    const inputNama = document.querySelector('#nama');
+    if (inputNama && nama) {
+      inputNama.value = nama;
+    }
+  </script>
+  
 </body>
 
 </html>
