@@ -33,7 +33,6 @@ body {
 .hero h4,
 .hero p {
   text-shadow: var(--shadow);
-  background-color: ;
 }
 
 .hero h1 {
@@ -493,4 +492,10 @@ footer li {
   .timeline li .timeline-panel::after {
     top: 31px;
   }
+}
+
+.text-outline {
+  color: white;
+  text-shadow: 1px 1px 2px black;
+  -webkit-text-stroke: 0.5px black;
 }
