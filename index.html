@@ -88,8 +88,8 @@
         <div class="col-lg-6">
           <div class="row">
             <div class="col-8 text-end">
-              <h3>Geovanny Hezkie Bolang</h3>
-              <p>The son of Mr. Donny Bolang (Late)<br> and <br> Mrs. Vanda Tumiwa</p>
+              <h3>Geovanny Hezkie Bolang, S.Kom</h3>
+              <p>The son of Mr. Donny Richard Bolang (Late)<br> and <br> Mrs. Vanda Caroline Veronika Tumiwa</p>
             </div>
             <div class="col-4">
               <img src="img/geo1.jpg" alt="Geovanny Bolang" class="img-responsive rounded-circle">
@@ -107,7 +107,7 @@
             <div class="col-8">
               <h3>Glaytia Sangkilen</h3>
               <p>
-                The daughter of Mr. Jody Sangkilen <br> and <br> Mrs. Agustina Runtuwarouw</p>
+                The daughter of Mr. Jody Obert Sangkilen <br> and <br> Mrs. Agustina Runtuwarouw</p>
             </div>
           </div>
         </div>
@@ -139,7 +139,7 @@
               <div class="row justify-content-center">
                 <div class="col-md-6">
                   <i class="bi bi-clock d-block"></i>
-                  <span>00.00 AM - 02.00 AM</span>
+                  <span>13.00 - 15.00 WITA</span>
                 </div>
                 <div class="col-md-6">
                   <i class="bi bi-calendar3 d-block"></i>
@@ -163,7 +163,7 @@
               <div class="row justify-content-center">
                 <div class="col-md-6">
                   <i class="bi bi-clock d-block"></i>
-                  <span>02.00 PM - Until Finished</span>
+                  <span>15.00 - Until Finished WITA</span>
                 </div>
                 <div class="col-md-6">
                   <i class="bi bi-calendar3 d-block"></i>
@@ -313,8 +313,10 @@
       </div>
 
       <form class="row row-cols-md-auto g-3 align-items-center justify-content-center" method="POST"
-        action="https://script.google.com/macros/s/AKfycbxyCrQtHT4MME8YM42rrkW3JaYcIaB4qWmNzlXsdRjOofhlnSLFm25dto9lhPced9kmtg/exec"
+        action="https://script.google.com/macros/s/AKfycbzORkMwLzlnzIl-9sO2j8oRqbQjxMJs3FFfjnNheJLU4t1D4YvQRxm8QJ5r6YkkAUH0/exec"
         id="my-form">
+        <input type="hidden" name="tipe" value="rsvp">
+
         <div class="col-12">
           <div class="mb-3">
             <label for="nama" class="form-label">Name</label>
@@ -344,28 +346,46 @@
 
       <div class="row justify-content-center mt-5">
         <div class="col-md-6">
-          <div id="disqus_thread"></div>
-          <div id="disqus_thread"></div>
-<!-- <script>
-    /**
-    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-    /*
-    var disqus_config = function () {
-    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-    };
-    */
-    (function() { // DON'T EDIT BELOW THIS LINE
-    var d = document, s = d.createElement('script');
-    s.src = 'https://giiro-wedding.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript> -->
+          <form id="commentForm">
+            <input type="hidden" name="tipe" value="komentar">
+            <div class="mb-3">
+              <label for="nama" class="form-label">Nama</label>
+              <input type="text" class="form-control" name="nama" required>
+            </div>
+            <div class="mb-3">
+              <label for="komentar" class="form-label">Ucapan / Doa</label>
+              <textarea class="form-control" name="komentar" rows="3" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Kirim</button>
+          </form>
         </div>
       </div>
+      
+      <script>
+      document.getElementById('commentForm').addEventListener('submit', function(e) {
+        e.preventDefault()
+        const form = e.target
+        const data = new FormData(form)
+      
+        fetch('https://script.google.com/macros/s/AKfycbzORkMwLzlnzIl-9sO2j8oRqbQjxMJs3FFfjnNheJLU4t1D4YvQRxm8QJ5r6YkkAUH0/exec', { // Ganti dengan URL Web App kamu
+          method: 'POST',
+          body: data
+        })
+        .then(res => res.json())
+        .then(response => {
+          if (response.result === 'success') {
+            alert('Komentar berhasil dikirim!')
+            form.reset()
+          } else {
+            alert('Gagal mengirim: ' + response.error)
+          }
+        })
+        .catch(err => {
+          alert('Terjadi kesalahan: ' + err.message)
+        })
+      })
+      </script>
+      
 
     </div>
   </section>
@@ -385,12 +405,12 @@
         <div class="col-md-6">
           <ul class="list-group">
             <li class="list-group-item">
-              <div class="fw-bold">BCA</div>
-              123456789 - Geovanny Bolang
+              <div class="fw-bold">BNI</div>
+              1924504069 - Glaytia Marsandha Sangkilen
             </li>
             <li class="list-group-item">
               <div class="fw-bold">MANDIRI</div>
-              987654321 - Geovanny Bolang
+              1500031358755 - Geovanny Hezkie Bolang
             </li>
             <li class="list-group-item">
               <div class="fw-bold">QRIS</div>
@@ -531,7 +551,7 @@
           body: data,
         })
           .then(() => {
-            alert("Konfirmasi kehadiran berhasil terkirim!");
+            alert("Konfirmasi kehadiran berhasil terkirim! \nKami tunggu kehadiran anda :)");
           })
       });
     });
@@ -566,6 +586,35 @@
       inputNama.value = nama;
     }
   </script>
+
+<script>
+  document.getElementById('commentForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const form = e.target;
+    const data = new FormData(form);
+
+    fetch('https://script.google.com/macros/s/AKfycbzORkMwLzlnzIl-9sO2j8oRqbQjxMJs3FFfjnNheJLU4t1D4YvQRxm8QJ5r6YkkAUH0/exec', { // GANTI dengan URL Web App Script kamu
+      method: 'POST',
+      body: data
+    })
+    .then(response => response.json())
+    .then(result => {
+      if (result.result === 'success') {
+        alert('Ucapan berhasil dikirim!');
+        form.reset();
+      } else {
+        alert('Gagal mengirim. Coba lagi nanti.');
+        console.log(result.error);
+      }
+    })
+    .catch(err => {
+      alert('Terjadi kesalahan!');
+      console.error(err);
+    });
+  });
+</script>
+
+  
   
 </body>
 
